@@ -4,7 +4,7 @@ const ctrl = require('../../controllers/contacts');
 const { validateBody, isValidId, authorization } = require('../../middlewares');
 const {schemas} = require('../../models/contact');
 
-router.get('/',authorization, ctrl.getAll);
+router.get('/', ctrl.getAll);
 
 router.get('/:id',authorization, isValidId, ctrl.getById);
 
