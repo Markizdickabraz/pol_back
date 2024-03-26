@@ -12,7 +12,7 @@ router.post('/', authorization, validateBody(schemas.addSchema), ctrl.addContact
 
 router.put('/:contactId',authorization, isValidId, validateBody(schemas.addSchema), ctrl.updateById);
 
-router.delete('/:contactId',authorization, isValidId, ctrl.deleteById);
+router.delete('/:contactId',authorization, ctrl.deleteById);
 
 router.patch('/:contactId/favorite', authorization, isValidId, validateBody(ctrl.updateFavorite), ctrl.updateFavorite)
 
