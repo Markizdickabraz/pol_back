@@ -17,3 +17,4 @@ router.delete('/:contactId',authorization, isValidId, ctrl.deleteById);
 router.patch('/:contactId/favorite', authorization, isValidId, validateBody(ctrl.updateFavorite), ctrl.updateFavorite)
 
 module.exports = router;
+
