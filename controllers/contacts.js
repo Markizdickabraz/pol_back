@@ -51,15 +51,21 @@ const updateById = async (req, res, next) => {
 };
 
 const deleteById = async (req, res, next) => {
-        const { contactId } = req.params;
+    const { contactId } = req.params;
+    try {
         const result = await Contact.findByIdAndDelete(contactId);
         if (!result) {
-            return HttpError(400, 'Not found')
+            return next(HttpError(404, 'Contact not found'));
         } 
-    res.status(200).res.json({
-        message: "contact deleted"
-    });
+        res.status(200).json({
+            message: "Contact deleted"
+        });
+    } catch (error) {
+        console.log(error);
+        next(HttpError(500, 'Internal server error'));
+    }
 };
+
 
 const updateFavorite = async (req, res, next) => {
     const { contactId } = req.params;
