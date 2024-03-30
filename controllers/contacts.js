@@ -53,7 +53,7 @@ const updateById = async (req, res, next) => {
 const deleteById = async (req, res, next) => {
     const { contactId } = req.params;
     try {
-        const result = await Contact.findByIdAndDelete(contactId);
+        const result = await Contact.findByIdAndDelete({_id: contactId});
         if (!result) {
             return next(HttpError(404, 'Contact not found'));
         } 
